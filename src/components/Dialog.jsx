@@ -4,7 +4,7 @@ const Dialog = ({ isOpen, onClose, date }) => {
   return (
     isOpen && (
       <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
-        <div className="bg-white p-5 rounded shadow-md w-1/3">
+        <div className="bg-white p-5 rounded dialog-box shadow-md w-1/3">
           <p className="mt-2 text-lg font-bold flex items-center py-3">
             <i
               className="fa fa-calendar mr-2 bg-orange-500 p-3 text-white rounded"

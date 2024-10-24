@@ -1,18 +1,34 @@
 import React, { useState } from "react";
 
 const Sidebar = () => {
-  const [activeMenu, setActiveMenu] = useState("calendar");
+  const [activeMenu, setActiveMenu] = useState("home");
+  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  const toggleSidebar = () => {
+    setIsSidebarOpen(!isSidebarOpen);
+  };
 
   return (
-    <div className="flex flex-col h-screen w-60">
+    <div className="flex flex-col">
+      <button
+        className="md:hidden p-4 text-gray-700"
+        onClick={toggleSidebar}
+      >
+        <i className="fas fa-bars text-2xl"></i>
+      </button>
+      <div
+        className={`${
+          isSidebarOpen ? "block" : "hidden"
+        } md:block flex flex-col w-60 h-screen`}
+      >
       <ul className="mt-4 flex-1 overflow-y-auto">
         <li
           className={`p-4 cursor-pointer ${
-            activeMenu === "calendar" ? "bg-orange-100" : ""
+            activeMenu === "home" ? "bg-orange-100" : ""
           }`}
-          onClick={() => setActiveMenu("calendar")}
+          onClick={() => setActiveMenu("home")}
         >
-            <i className="fas fa-home mr-2"></i> Home
+         <i className="fas fa-home mr-2"></i> Home
         </li>
         <li
           className={`p-4 cursor-pointer ${
@@ -99,7 +115,45 @@ const Sidebar = () => {
         >
           <i className="fas fa-users mr-2"></i> Community
         </li>
+        <li className="p-4 cursor-pointer">
+          <i className="fas fa-broadcast-tower mr-2"></i> Stations
+          <ul className="pl-4 mt-2 space-y-2">
+            <li
+              className={`cursor-pointer ${
+                activeMenu === "stations1" ? "bg-orange-100" : ""
+              }`}
+              onClick={() => setActiveMenu("stations1")}
+            >
+              <i className="fas fa-headphones mr-2"></i> Scheduled Listening
+            </li>
+            <li
+              className={`cursor-pointer ${
+                activeMenu === "stations2" ? "bg-orange-100" : ""
+              }`}
+              onClick={() => setActiveMenu("stations2")}
+            >
+              <i className="fas fa-music mr-2"></i> Music Discovery
+            </li>
+            <li
+              className={`cursor-pointer ${
+                activeMenu === "stations3" ? "bg-orange-100" : ""
+              }`}
+              onClick={() => setActiveMenu("stations3")}
+            >
+              <i className="fas fa-smile mr-2"></i> Positive Music
+            </li>
+            <li
+              className={`cursor-pointer ${
+                activeMenu === "stations4" ? "bg-orange-100" : ""
+              }`}
+              onClick={() => setActiveMenu("stations4")}
+            >
+              <i className="fas fa-record-vinyl mr-2"></i> Mood Regulation
+            </li>
+          </ul>
+        </li>
       </ul>
+      </div>
     </div>
   );
 };

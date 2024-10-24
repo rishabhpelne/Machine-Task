@@ -13,3 +13,6 @@
   .sidebar {
     transition: transform 0.3s ease-in-out;
   }
+  .dialog-box {
+    border-radius: 20px;
+  }
